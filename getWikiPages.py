@@ -30,7 +30,5 @@ def getWikiUrlAddresses():
         return None
 
 
-wikiUrls = getWikiUrlAddresses()
-
-#TODO: make it so other python files can call this and get back just those Url's
-print(wikiUrls)
+#wikiUrls = getWikiUrlAddresses()
+#print(wikiUrls)
