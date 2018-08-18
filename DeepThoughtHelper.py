@@ -5,23 +5,37 @@ import pymongo
 from getWikiPages import getWikiUrlAddresses
 from searchWikiPages import searchWikiPages
 
-#TODO: Get parameters for getWikiUrlAddresses from some automated thing you're gonna make
-wiki_url_end_address = getWikiUrlAddresses()
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+mydb = myclient["mydatabase"]
+nextWikiPage = mydb['nextWikiPage']
+sentencesWith42 = mydb['sentencesWith42']
+
+if nextWikiPage.count() == 0:
+    apiFrom = 'aaaaaaa'
+else:
+    apiFrom = nextWikiPage.find_one()['nextApiFrom']
+
+wiki_url_end_address_data = getWikiUrlAddresses(apiFrom)
+wiki_url_end_address = wiki_url_end_address_data['query']['allpages'][0]['title']
+
+#get our next wiki end address
+nextApiFrom = wiki_url_end_address_data['continue']['apcontinue']
 
 # construct those url's above into actual url's
 wiki_url_base = 'https://en.wikipedia.org/wiki/'
 
-wiki_url = wiki_url_base + wiki_url_end_address['query']['allpages'][0]['title']
+wiki_url = wiki_url_base + wiki_url_end_address
 
-# Search through those wiki pages and find 42!
-results = searchWikiPages(wiki_url)
+# if we haven't already searched this URL, then insert the row
+# probably don't need this check
+if sentencesWith42.find_one({'url': wiki_url}) == None:
+    # Search through those wiki pages and find 42!
+    results = searchWikiPages(wiki_url)
 
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+    # also check to make sure the list is populated
+    if results:
+        dbResult  = sentencesWith42.insert_one({'text': results, 'url': wiki_url})
 
-mydb = myclient["mydatabase"]
-collection = mydb['test-collection']
-
-
-dbResult  = collection.insert_one({'text': results, 'url': wiki_url})
-
-#TODO: Save the results, if any, to the database
+# remove the previous nextWikiPage and insert our new one
+nextWikiPage.remove({})
+nextWikiPage.insert_one({'nextApiFrom': nextApiFrom})
