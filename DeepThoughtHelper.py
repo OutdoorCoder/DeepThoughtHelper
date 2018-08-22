@@ -6,6 +6,7 @@ from getWikiPages import getWikiUrlAddresses
 from searchWikiPages import searchWikiPages
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+print(myclient)
 mydb = myclient["mydatabase"]
 nextWikiPage = mydb['nextWikiPage']
 sentencesWith42 = mydb['sentencesWith42']
@@ -31,7 +32,8 @@ wiki_url = wiki_url_base + wiki_url_end_address
 if sentencesWith42.find_one({'url': wiki_url}) == None:
     # Search through those wiki pages and find 42!
     results = searchWikiPages(wiki_url)
-
+    print(wiki_url)
+    print(results)
     # also check to make sure the list is populated
     if results:
         dbResult  = sentencesWith42.insert_one({'text': results, 'url': wiki_url})
