@@ -3,7 +3,7 @@ from datetime import datetime, time
 
 
 timeStart = '10:00PM'
-timeEnd = '11:00AM'
+timeEnd = '12:00PM'
 timeEnd = datetime.strptime(timeEnd, "%I:%M%p").time()
 timeStart = datetime.strptime(timeStart, "%I:%M%p").time()
 timeNow = datetime.now().time()

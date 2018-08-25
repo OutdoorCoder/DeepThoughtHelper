@@ -1,25 +1,26 @@
 import subprocess
-
+import logging
 from random import randint
 from time import sleep
 
 from isNowInTimePeriod import isNowInTimePeriod
 
+logging.basicConfig(filename='records.log',
+                    level=logging.INFO,
+                    format='%(asctime)s %(message)s',
+                    datefmt='%m/%d/%Y %I:%M:%S %p')
+
 while True:
 
-    #if time is between like 11pm and 6am whatever time I'm in
-    #TODO: Make this actually determine whether the code runs
+    #if time is between 10pm and 11am, then run the program
     if isNowInTimePeriod():
-        print(True)
-    else:
-        print(False)
 
-    response = subprocess.run("python DeepThoughtHelper.py")
+        response = subprocess.run("python DeepThoughtMain.py")
 
-    print(response)
+        logging.info(response)
 
-    if response.returncode == 1:
-        print("Error has occured")
-        break
+        if response.returncode == 1:
+            logging.error("Error has occured: %s", response)
+            break
 
-    sleep(randint(10,40))
+        sleep(randint(10,40))
