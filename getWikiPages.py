@@ -4,9 +4,9 @@
 
 import json
 import requests
+import logging
 
 api_token = ''
-#TODO: this is set to just get one right now, maybe change that later
 api_url_base = 'https://en.wikipedia.org/w/api.php?action=query&list=allpages&aplimit=1&format=json'
 
 headers = {'Content-Type': 'application/json'}
@@ -20,6 +20,7 @@ def getWikiUrlAddresses(apiFrom):
     if response.status_code == 200:
         return json.loads(response.content.decode('utf-8'))
     else:
+        logging.ERROR('Error: [HTTP {0}]: Content: {1}'.format(response.status_code, response.content))
         return None
 
 

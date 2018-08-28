@@ -5,13 +5,14 @@
 import requests
 import bs4
 import re
+import logging
 
 #api_url_base = 'https://en.wikipedia.org/wiki/List_of_minor_The_Hitchhiker%27s_Guide_to_the_Galaxy_characters#Deep_Thought'
 
 def searchWikiPages(url):
 
     res = requests.get(url)
-    res.raise_for_status()
+    logging.info(res.raise_for_status())
 
     soup = bs4.BeautifulSoup(res.text, "html.parser")
     pElems = soup.select('p')
