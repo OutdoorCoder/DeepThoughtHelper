@@ -1,0 +1,19 @@
+{
+  "name": "deep_thought_helper",
+  "version": "1.0.0",
+  "description": "restful api to get our search results to the client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OutdoorCoder/DeepThoughtHelper.git"
+  },
+  "author": "OutdoorCoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OutdoorCoder/DeepThoughtHelper/issues"
+  },
+  "homepage": "https://github.com/OutdoorCoder/DeepThoughtHelper#readme"
+}
