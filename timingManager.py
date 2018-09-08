@@ -23,4 +23,4 @@ while True:
             logging.error("Error has occured: %s", response)
             break
 
-        sleep(randint(10,40))
+        sleep(randint(1,3))
