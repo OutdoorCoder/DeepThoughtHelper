@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Deep Thought Helper</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Deep Thought Helper</h1>
+    <ul>
+      <% title.forEach(function(title){ %>
+        <li>
+          <%= title.text %>
+          <a href="<%= title.url %>"><%= title.url %></a>
+        </li>
+      <% }); %>
+    </ul>
   </body>
 </html>
