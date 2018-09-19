@@ -1,7 +1,5 @@
 from datetime import datetime, time
 
-
-
 timeStart = '4:00PM'
 timeEnd = '12:00PM'
 timeEnd = datetime.strptime(timeEnd, "%I:%M%p").time()

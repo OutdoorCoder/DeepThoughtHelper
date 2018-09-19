@@ -1,5 +1,4 @@
 #! python3 SearchWikiPages.py
-
 # Search the wiki pages for sentences with the number 42 in them
 
 import requests
@@ -7,12 +6,13 @@ import bs4
 import re
 import logging
 
+log = logging.getLogger(__name__)
 #api_url_base = 'https://en.wikipedia.org/wiki/List_of_minor_The_Hitchhiker%27s_Guide_to_the_Galaxy_characters#Deep_Thought'
 
 def searchWikiPages(url):
 
     res = requests.get(url)
-    logging.info(res.raise_for_status())
+    log.info(res.raise_for_status())
 
     soup = bs4.BeautifulSoup(res.text, "html.parser")
     pElems = soup.select('p')

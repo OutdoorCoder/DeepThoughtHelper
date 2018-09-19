@@ -1,6 +1,6 @@
 #! python3 DeepThoughtHelper.py
-
 # Main program for project
+
 import pymongo
 import logging
 
@@ -9,18 +9,24 @@ from searchWikiPages import searchWikiPages
 
 WIKI_URL_BASE = 'https://en.wikipedia.org/wiki/'
 
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mydb = myclient["mydatabase"]
-nextWikiPage = mydb['nextWikiPage']
-sentencesWith42 = mydb['sentencesWith42']
+logging.basicConfig(filename='records.log',
+                    level=logging.INFO,
+                    format='%(asctime)s %(message)s',
+                    datefmt='%m/%d/%Y %I:%M:%S %p')
+
+#connect to database and setup collections
+my_client = pymongo.MongoClient("mongodb://localhost:27017/")
+my_db = my_client["mydatabase"]
+next_wiki_page = my_db['nextwikipage']
+sentences_with_42 = my_db['sentencesWith42']
 
 def main():
-    if nextWikiPage.count() == 0:
-        apiFrom = 'aaaaaaa'
+    if next_wiki_page.count() == 0:
+        api_from = 'aaaaaaa'
     else:
-        apiFrom = nextWikiPage.find_one()['nextApiFrom']
+        api_from = next_wiki_page.find_one()['next_api_from']
 
-    wiki_url_end_address_data = getWikiUrlAddresses(apiFrom)
+    wiki_url_end_address_data = getWikiUrlAddresses(api_from)
     wiki_url_end_address = wiki_url_end_address_data['query']['allpages'][0]['title']
 
     wiki_url = WIKI_URL_BASE + wiki_url_end_address
@@ -28,18 +34,18 @@ def main():
     # Search through those wiki pages and find 42!
     results = searchWikiPages(wiki_url)
 
-    # also check to make sure the list is populated
+    # check to make sure the list is populated
     if results:
         logging.info(wiki_url)
         logging.info(results)
-        dbResult  = sentencesWith42.insert_one({'text': results, 'url': wiki_url})
+        dbResult  = sentences_with_42.insert_one({'text': results, 'url': wiki_url})
 
-    # remove the previous nextWikiPage and insert our new one
     # get our next wiki end address
-    nextApiFrom = wiki_url_end_address_data['continue']['apcontinue']
+    next_api_from = wiki_url_end_address_data['continue']['apcontinue']
 
-    nextWikiPage.remove({})
-    nextWikiPage.insert_one({'nextApiFrom': nextApiFrom})
+    # remove the previous next_wiki_page and insert our new one
+    next_wiki_page.remove({})
+    next_wiki_page.insert_one({'next_api_from': next_api_from})
 
 if __name__ == "__main__":
     main()
