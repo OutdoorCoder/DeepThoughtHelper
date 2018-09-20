@@ -4,8 +4,8 @@
 import pymongo
 import logging
 
-from getWikiPages import getWikiUrlAddresses
-from searchWikiPages import searchWikiPages
+from get_wiki_url_pages import get_wiki_url_pages
+from search_wiki_pages import search_wiki_pages
 
 WIKI_URL_BASE = 'https://en.wikipedia.org/wiki/'
 
@@ -26,7 +26,7 @@ def main():
     else:
         api_from = next_wiki_page.find_one()['next_api_from']
 
-    wiki_url_end_address_data = getWikiUrlAddresses(api_from)
+    wiki_url_end_address_data = get_wiki_url_pages(api_from)
     wiki_url_end_address = wiki_url_end_address_data['query']['allpages'][0]['title']
 
     wiki_url = WIKI_URL_BASE + wiki_url_end_address

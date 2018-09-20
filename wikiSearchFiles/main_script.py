@@ -15,9 +15,9 @@ def main():
     while True:
 
         #if time is between 10pm and 11am, then run the program
-        if isNowInTimePeriod():
+        if is_now_in_time_period():
 
-            response = subprocess.run("python DeepThoughtMain.py")
+            response = subprocess.run("python deep_thought_helper.py")
 
             logging.info(response)
 

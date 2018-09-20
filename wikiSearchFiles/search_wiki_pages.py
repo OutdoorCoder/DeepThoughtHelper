@@ -1,4 +1,4 @@
-#! python3 SearchWikiPages.py
+#! python3 search_wiki_pages.py
 # Search the wiki pages for sentences with the number 42 in them
 
 import requests
@@ -9,31 +9,31 @@ import logging
 log = logging.getLogger(__name__)
 #api_url_base = 'https://en.wikipedia.org/wiki/List_of_minor_The_Hitchhiker%27s_Guide_to_the_Galaxy_characters#Deep_Thought'
 
-def searchWikiPages(url):
+def search_wiki_pages(url):
 
     res = requests.get(url)
     log.info(res.raise_for_status())
 
     soup = bs4.BeautifulSoup(res.text, "html.parser")
-    pElems = soup.select('p')
+    p_elements = soup.select('p')
 
     # Match the number 42 and it's surrounding sentence
     # The central group is options for the number
     # The [^.?!\n]* and [^.?!]* match anything that isn't a the beginning or end of a sentence
     # The \W's around 42 make sure that 42 isn't part of a larger number like 32442
-    fortyTwoRegex = re.compile(r'[^.?!\n]*(?:\W42\W|forty two|forty-two)[^.?!]*[!.?]', re.IGNORECASE)
+    forty_two_regex = re.compile(r'[^.?!\n]*(?:\W42\W|forty two|forty-two)[^.?!]*[!.?]', re.IGNORECASE)
 
     # This regex removes any html links or other html bit's in the capture text
-    htmlRemovalRegex = re.compile(r'<.*?>')
+    html_removal_regex = re.compile(r'<.*?>')
 
     #text that has 42
-    matches = fortyTwoRegex.findall(str(pElems))
+    matches = forty_two_regex.findall(str(p_elements))
 
-    finalResult = []
+    final_result = []
     #remove html from matched text, and then append to results
     for m in range(len(matches)):
-        finalResult.append(htmlRemovalRegex.sub('', matches[m]))
+        final_result.append(html_removal_regex.sub('', matches[m]))
 
-    return finalResult
+    return final_result
 
-#print(searchWikiPages(api_url_base))
+#print(search_wiki_pages(api_url_base))
