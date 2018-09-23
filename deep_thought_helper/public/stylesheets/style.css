@@ -1,11 +1,46 @@
 body {
   background-color: #1f4151;
   color: #ffffff;
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 
+h1 {
+  margin-left: 50px;
+}
+
+ul.header {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    border-radius: 0px;
+    width: 100%;
+}
+
+.header li {
+    float: left;
+}
+
+.header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.header li a:hover {
+    background-color: #111;
+}
+
+
+
 ul {
+  margin-left: 50px;
+  margin-right: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 25px;
