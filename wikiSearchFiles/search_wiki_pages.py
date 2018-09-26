@@ -20,8 +20,10 @@ def search_wiki_pages(url):
     # Match the number 42 and it's surrounding sentence
     # The central group is options for the number
     # The [^.?!\n]* and [^.?!]* match anything that isn't a the beginning or end of a sentence
-    # The \W's around 42 make sure that 42 isn't part of a larger number like 32442
-    forty_two_regex = re.compile(r'[^.?!\n]*(?:\W42\W|forty two|forty-two)[^.?!]*[!.?]', re.IGNORECASE)
+    # The negated \w's around 42 make sure that 42 isn't part of a larger number like 32442
+    # The negated brackets around 42 make sure we don't get wikipedia footnotes, otherwise the results get flooded
+    # with footnotes
+    forty_two_regex = re.compile(r'[^.?!\n]*(?:[^\[\w]42[^\]\w]|forty two|forty-two)[^.\?!]*[!.?]', re.IGNORECASE)
 
     # This regex removes any html links or other html bit's in the capture text
     html_removal_regex = re.compile(r'<.*?>')

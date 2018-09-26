@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  margin-left: 50px;
+  text-align: center;
 }
 
 ul.header {
@@ -21,19 +21,29 @@ ul.header {
 
 .header li {
     float: left;
+    margin: 0;
 }
 
 .header li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    vertical-align: middle;
+    padding: 23px 16px;
     text-decoration: none;
 }
 
 /* Change the link color to #111 (black) on hover */
 .header li a:hover {
     background-color: #111;
+}
+
+.header li.headerImage {
+  float: right;
+}
+
+.header .headerImage a {
+  padding: 0;
 }
 
 
@@ -49,7 +59,7 @@ ul {
 }
 
 li {
-  margin: 0 0 10px 0;
+  margin: 0 0 20px 0;
 
 }
 

@@ -13,7 +13,7 @@ api_url_base = 'https://en.wikipedia.org/w/api.php?action=query&list=allpages&ap
 
 headers = {'Content-Type': 'application/json'}
 
-def getWikiUrlAddresses(apiFrom):
+def get_wiki_url_pages(apiFrom):
     api_url = '{0}&apfrom={1}'.format(api_url_base, apiFrom)
     #print(api_url)
     response = requests.get(api_url, headers = headers)
@@ -26,6 +26,6 @@ def getWikiUrlAddresses(apiFrom):
         return None
 
 
-#wikiUrls = getWikiUrlAddresses()
+#wikiUrls = get_wiki_url_pages()
 #print(wikiUrls)
 #print(wikiUrls['query']['allpages'][0]['title'])
