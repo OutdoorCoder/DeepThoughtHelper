@@ -3,7 +3,7 @@ import logging
 from random import randint
 from time import sleep
 
-from isNowInTimePeriod import isNowInTimePeriod
+from is_now_in_time_period import is_now_in_time_period
 
 
 def main():

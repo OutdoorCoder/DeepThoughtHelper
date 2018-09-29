@@ -4,7 +4,7 @@
 import pymongo
 import logging
 
-from get_wiki_url_pages import get_wiki_url_pages
+from get_wiki_pages import get_wiki_url_pages
 from search_wiki_pages import search_wiki_pages
 
 WIKI_URL_BASE = 'https://en.wikipedia.org/wiki/'
@@ -32,7 +32,7 @@ def main():
     wiki_url = WIKI_URL_BASE + wiki_url_end_address
 
     # Search through those wiki pages and find 42!
-    results = searchWikiPages(wiki_url)
+    results = search_wiki_pages(wiki_url)
 
     # check to make sure the list is populated
     if results:
