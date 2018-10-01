@@ -17,12 +17,12 @@ def get_wiki_url_pages(apiFrom):
     api_url = '{0}&apfrom={1}'.format(api_url_base, apiFrom)
     #print(api_url)
     response = requests.get(api_url, headers = headers)
-
     #TODO: finish walking through that demo and figure out better error handling/logging
     if response.status_code == 200:
         return json.loads(response.content.decode('utf-8'))
     else:
-        log.ERROR('Error: [HTTP {0}]: Content: {1}'.format(response.status_code, response.content))
+        print('stuff')
+        log.error('Error: [HTTP {0}]: Content: {1}'.format(response.status_code, response.content))
         return None
 
 

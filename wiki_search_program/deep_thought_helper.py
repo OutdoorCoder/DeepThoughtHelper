@@ -14,6 +14,9 @@ logging.basicConfig(filename='records.log',
                     format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p')
 
+log = logging.getLogger(__name__)
+
+
 #connect to database and setup collections
 my_client = pymongo.MongoClient("mongodb://localhost:27017/")
 my_db = my_client["mydatabase"]
@@ -36,8 +39,8 @@ def main():
 
     # check to make sure the list is populated
     if results:
-        logging.info(wiki_url)
-        logging.info(results)
+        log.info(wiki_url)
+        log.info(results)
         dbResult  = sentences_with_42.insert_one({'text': results, 'url': wiki_url})
 
     # get our next wiki end address
