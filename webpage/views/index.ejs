@@ -15,11 +15,11 @@
     </ul>
     <h1>Deep Thought Helper</h1>
     <ul>
-      <% title.forEach(function(title){ %>
+      <% potentialAnswer.forEach(function(potentialAnswer){ %>
         <li>
-          <%= title.text %>
+          "<%= potentialAnswer.text %>" - <%= potentialAnswer.url %>
           <br/>
-          <a href="<%= title.url %>">link</a>
+          <a href="<%= potentialAnswer.url %>">link</a>
         </li>
       <% }); %>
     </ul>
