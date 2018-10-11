@@ -47,6 +47,17 @@ ul.header {
   padding: 0;
 }
 
+.aboutExpand {
+  height: 120px;
+  background-color: #E9967A;
+  overflow: hidden;
+  transition: height ease-in 0.3s;
+}
+
+.header:hover + .aboutExpand {
+  height: 500px;
+}
+
 ul {
   margin-left: 200px;
   margin-right: 200px;
@@ -59,7 +70,6 @@ ul {
 
 li {
   margin: 0 0 20px 0;
-
 }
 
 a {
