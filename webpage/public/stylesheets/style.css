@@ -48,14 +48,10 @@ ul.header {
 }
 
 .aboutExpand {
-  height: 120px;
+  height: 0px;
   background-color: #E9967A;
   overflow: hidden;
   transition: height ease-in 0.3s;
-}
-
-.header:hover + .aboutExpand {
-  height: 500px;
 }
 
 ul {
@@ -74,6 +70,10 @@ li {
 
 a {
   color: #00B7FF;
+}
+
+a:hover {
+ cursor:pointer;
 }
 
 @media only screen and (max-width: 700px) {

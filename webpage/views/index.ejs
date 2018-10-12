@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
@@ -8,12 +9,13 @@
   <body>
     <ul class="header">
       <li><a href="#">Home</a></li>
-      <li class='aboutButton'><a href=''>About</a></li>
-      <li><a href="#">Contact</a></li>
-            <li class="headerImage"><a href="https://github.com/OutdoorCoder?tab=repositories"><img src="/images/GitHub-Mark.png"></a></li>
+      <li class='aboutButton'><a id="about">About</a></li>
+      <li class="headerImage"><a href="https://github.com/OutdoorCoder?tab=repositories"><img src="/images/GitHub-Mark.png"></a></li>
       <li class="headerImage"><a href="https://www.linkedin.com/in/cameron-massey-056b89127/"><img src="/images/linkedin-logo.png"></a></li>
     </ul>
-    <div class="aboutExpand"></div>
+    <div id="aboutExpand" class="aboutExpand" style="height: 0px">
+      <p>sdfsdfsdfsdf</p>
+    </div>
     <h1>Deep Thought Helper</h1>
     <ul>
       <% potentialAnswer.forEach(function(potentialAnswer){ %>
@@ -25,4 +27,15 @@
       <% }); %>
     </ul>
   </body>
+  <script>
+    document.getElementById("about").addEventListener("click", function(){
+      console.log(document.getElementById("aboutExpand").style.height)
+      if (document.getElementById("aboutExpand").style.height == "0px"){
+        document.getElementById("aboutExpand").style.height = "400px";
+      }
+      else {
+        document.getElementById("aboutExpand").style.height = "0px";
+      }
+    });
+  </script>
 </html>
