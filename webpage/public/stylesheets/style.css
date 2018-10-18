@@ -48,10 +48,16 @@ ul.header {
 }
 
 .aboutExpand {
-  height: 0px;
+  max-height: 0;
   background-color: #E9967A;
   overflow: hidden;
-  transition: height ease-in 0.3s;
+  transition: max-height ease-in 0.3s;
+}
+
+.aboutP {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul {
