@@ -4,6 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const { spawn } = require('child_process');
+const pyProg = spawn('python.exe', ['-u','./wiki_search_program/main_script.py']);
+
+pyProg.on('close', (code, signal) => {
+  console.log(code + " " + signal)
+});
+
 require('./app_api/models/db');
 
 var indexRouter = require('./routes/index');
@@ -23,6 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+//const spawn = require("child_process").spawn;
+//const pythonProcess = spawn('python',["./../wiki_search_programs/main_script.py"]);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -2,6 +2,7 @@ import subprocess
 import logging
 from random import randint
 from time import sleep
+import deep_thought_helper
 
 from is_now_in_time_period import is_now_in_time_period
 
@@ -17,13 +18,13 @@ def main():
         #if time is between 10pm and 11am, then run the program
         if is_now_in_time_period():
 
-            response = subprocess.run("python deep_thought_helper.py")
+            #response = subprocess.run("python deep_thought_helper.py")
 
-            logging.info(response)
-
-            if response.returncode == 1:
-                logging.error("Error has occured: %s", response)
-                break
+            logging.info("")
+            deep_thought_helper.main()
+            #if response.returncode == 1:
+            #    logging.error("Error has occured: %s", response)
+            #    break
 
             sleep(randint(1,3))
 

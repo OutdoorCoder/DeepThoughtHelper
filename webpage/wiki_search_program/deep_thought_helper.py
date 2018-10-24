@@ -23,6 +23,8 @@ my_db = my_client["mydatabase"]
 next_wiki_page = my_db['nextwikipage']
 sentences_with_42 = my_db['sentencesWith42']
 
+log.info("")
+
 def main():
     if next_wiki_page.count() == 0:
         api_from = 'aaaaaaa'

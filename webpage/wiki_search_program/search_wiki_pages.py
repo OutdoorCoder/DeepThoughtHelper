@@ -11,9 +11,10 @@ log = logging.getLogger(__name__)
 
 def search_wiki_pages(url):
 
+    #url = "https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy"
     res = requests.get(url)
     if res.status_code == 404:
-        log.info(str(res.status_code) + ', ' url)
+        log.info(str(res.status_code) + ', ' + url)
         return []
 
     soup = bs4.BeautifulSoup(res.text, "html.parser")
