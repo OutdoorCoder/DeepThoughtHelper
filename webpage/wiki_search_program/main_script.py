@@ -18,15 +18,10 @@ def main():
         #if time is between 10pm and 11am, then run the program
         if is_now_in_time_period():
 
-            #response = subprocess.run("python deep_thought_helper.py")
-
             logging.info("")
             deep_thought_helper.main()
-            #if response.returncode == 1:
-            #    logging.error("Error has occured: %s", response)
-            #    break
 
-            sleep(randint(1,3))
+            sleep(randint(1,20))
 
 if __name__ == "__main__":
     main()

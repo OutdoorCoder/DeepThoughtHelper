@@ -26,7 +26,7 @@ def search_wiki_pages(url):
     # The negated \w's around 42 make sure that 42 isn't part of a larger number like 32442
     # The negated brackets around 42 make sure we don't get wikipedia footnotes, otherwise the results get flooded
     # with footnotes
-    forty_two_regex = re.compile(r'[^.?!\n]*(?:42|forty two|forty-two)[^.\]\?!]*[!.?]', re.IGNORECASE)
+    forty_two_regex = re.compile(r'[^.?!\n]*(?<!\d|\w)(?:42|forty two|forty-two)(?!\d|\w)[^.\]\?!]*[!.?]', re.IGNORECASE)
 
     # This regex removes any html links or other html bit's in the capture text
     html_removal_regex = re.compile(r'<.*?>')
