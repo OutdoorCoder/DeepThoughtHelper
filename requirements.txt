@@ -7,4 +7,3 @@ pyperclip==1.6.1
 requests==2.19.1
 Send2Trash==1.5.0
 urllib3==1.23
-python==3.6.5
