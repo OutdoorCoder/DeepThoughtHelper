@@ -18,8 +18,8 @@ log = logging.getLogger(__name__)
 
 
 #connect to database and setup collections
-my_client = pymongo.MongoClient("mongodb://localhost:27017/")
-my_db = my_client["mydatabase"]
+my_client = pymongo.MongoClient("mongodb://OutdoorCoder:aaaaaa1@ds151753.mlab.com:51753/heroku_041hh0sv")
+my_db = my_client["heroku_041hh0sv"]
 next_wiki_page = my_db['nextwikipage']
 sentences_with_42 = my_db['sentencesWith42']
 

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://heroku_041hh0sv:gpu90q37tf53149rku84r4r9vq@ds151753.mlab.com:51753/heroku_041hh0sv';
+var dbURI = 'mongodb://OutdoorCoder:aaaaaa1@ds151753.mlab.com:51753/heroku_041hh0sv';
 //if (process.env.NODE_ENV === 'production') {
 //  dbURI = process.env.MONGOLAB_URI;
 //}
