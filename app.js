@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const { spawn } = require('child_process');
-const pyProg = spawn('python.exe', ['-u''./wiki_search_program/main_script.py']);
+const pyProg = spawn('python', ['-u','./wiki_search_program/main_script.py']);
 
 pyProg.on('close', (code, signal) => {
   console.log(code + " " + signal)
