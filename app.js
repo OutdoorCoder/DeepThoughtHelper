@@ -4,12 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const { spawn } = require('child_process');
-const pyProg = spawn('python', ['./main_script.py','-u']);
+//const { spawn } = require('child_process');
+//const pyProg = spawn('python', ['./main_script.py','-u']);
 
-pyProg.on('close', (code, signal) => {
-  console.log(code + " " + signal)
-});
+//pyProg.on('close', (code, signal) => {
+//  console.log(code + " " + signal)
+//});
 
 require('./app_api/models/db');
 
