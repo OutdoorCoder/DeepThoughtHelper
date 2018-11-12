@@ -18,6 +18,7 @@ log = logging.getLogger(__name__)
 
 
 #connect to database and setup collections
+#my_client = pymongo.MongoClient("localhost", 27017)
 my_client = pymongo.MongoClient("mongodb://OutdoorCoder:aaaaaa1@ds151753.mlab.com:51753/heroku_041hh0sv")
 my_db = my_client["heroku_041hh0sv"]
 next_wiki_page = my_db['nextwikipage']
@@ -43,7 +44,8 @@ def main():
     if results:
         log.info(wiki_url)
         log.info(results)
-        dbResult  = sentences_with_42.insert_one({'text': results, 'url': wiki_url})
+        if sentences_with_42.find({'Text': results}).count() == 0:
+            dbResult  = sentences_with_42.insert_one({'text': results, 'url': wiki_url})
 
     # get our next wiki end address
     next_api_from = wiki_url_end_address_data['continue']['apcontinue']
