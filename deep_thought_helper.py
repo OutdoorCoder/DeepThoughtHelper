@@ -44,7 +44,7 @@ def main():
     if results:
         log.info(wiki_url)
         log.info(results)
-        if sentences_with_42.find({'Text': results}).count() == 0:
+        if sentences_with_42.find({Text: results[0]}).count() == 0:
             dbResult  = sentences_with_42.insert_one({'text': results, 'url': wiki_url})
 
     # get our next wiki end address
