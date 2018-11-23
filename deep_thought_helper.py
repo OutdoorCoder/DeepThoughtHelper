@@ -32,6 +32,7 @@ def main():
     else:
         api_from = next_wiki_page.find_one()['next_api_from']
 
+    # construct the url
     wiki_url_end_address_data = get_wiki_url_pages(api_from)
     wiki_url_end_address = wiki_url_end_address_data['query']['allpages'][0]['title']
 
@@ -44,7 +45,7 @@ def main():
     if results:
         log.info(wiki_url)
         log.info(results)
-        if sentences_with_42.find({Text: results[0]}).count() == 0:
+        if sentences_with_42.find({'text': results}).count() == 0:
             dbResult  = sentences_with_42.insert_one({'text': results, 'url': wiki_url})
 
     # get our next wiki end address
