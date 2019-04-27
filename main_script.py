@@ -4,6 +4,11 @@ from random import randint
 from time import sleep
 import deep_thought_helper
 
+# This program is no longer needed but I'm keeping for potential future use.
+# This is the scheduler for running the page search. It is no longer needed
+# because Heroku.com has it's own scheduling software that I have to use, as
+# heroku is not compatible with me running my own scheduling
+
 from is_now_in_time_period import is_now_in_time_period
 
 

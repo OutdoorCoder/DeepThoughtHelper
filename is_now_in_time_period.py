@@ -1,3 +1,7 @@
+# Helper function for main_script.py
+# It checks to see if the current time is within the start and end times which
+# are constants
+
 from datetime import datetime, time
 
 time_start = '1:00AM'
